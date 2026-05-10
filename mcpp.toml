@@ -1,0 +1,5 @@
+[package]
+name        = "mSkipList_m"
+version     = "0.1.0"
+description = "A modular C++23 package"
+license     = "MIT"
