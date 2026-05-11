@@ -9,6 +9,8 @@
 > 本项目是 mSkipList 原项目的 mcpp 构建适配版本。
 >
 > **本项目在运行性能上不如原项目 [mSkipList](https://github.com/Ximiaw/mSkipList)，如果追求最佳运行性能，请直接使用原项目。**
+>
+> 性能差异主要来源于 **C++ 模块化（Module）** 机制本身引入的额外开销，与 mcpp 构建工具无关。
 
 ## 项目简介
 
