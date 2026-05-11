@@ -1,10 +1,12 @@
 [package]
 name        = "mSkipList_mcpp"
 version     = "0.1.0"
-description = "A generic Skip List data structure implemented in C++23, supporting multi-field data storage, arbitrary field as primary key, and custom memory allocation strategies."
 license     = "MIT"
 authors     = ["Ximiaw"]
 repo        = "https://github.com/Ximiaw/mSkipList_mcpp"
 
-[targets.mSkipList]
+[targets.mSkipList_mcpp]
 kind = "lib"
+
+[build]
+cxxflags     = ["-O3"]

@@ -1,5 +1,5 @@
 import std;
-import mSkipList;
+import mSkipList_mcpp;
 
 using namespace std;
 using namespace msl;
