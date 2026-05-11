@@ -35,32 +35,43 @@ mSkipList 是一个基于 C++20 实现的通用跳表（Skip List）数据结构
 
 ```toml
 [dependencies]
-mSkipList_mcpp = { git = "https://github.com/Ximiaw/mSkipList_mcpp" }
+mSkipList_mcpp = { git = "https://github.com/Ximiaw/mSkipList_mcpp.git",branch = "main" }
 ```
 
 然后在你的模块中导入：
 
 ```cpp
 import mSkipList_mcpp;
+import std;
+
+using namespace msl;
+using namespace std;
+
+struct task {
+    size_t priority = 0;
+    size_t number = 0;
+    task(size_t p = 0, size_t n = 0) : priority(p), number(n) {};
+
+    bool operator==(const task& other) const {
+        return priority == other.priority && number == other.number;
+    }
+    auto operator<=>(const task& other) const = default;
+};
 
 int main() {
-    // 以第 0 个字段（int）作为主键，存储 <id, name, score>
-    auto list = msl::make_mSkipList<0, int, std::string, double>();
+    auto sl = make_mSkipList<0, task, int>();
 
-    // 插入数据
-    list.insert(1, "Alice", 95.5);
-    list.insert(2, "Bob", 87.0);
-    list.insert(3, "Charlie", 92.3);
-
-    // 查询
-    const std::string& name = list.get<std::string>(1, 1);
-
-    // 遍历
-    for (auto it = list.begin(); it != list.end(); ++it) {
-        auto data = *it;
+    for (size_t i = 0; i < 5; i++) {
+        for (size_t j = 0; j < 10; j++) {
+            sl.insert(task{i, j}, i + j);
+        }
     }
 
-    return 0;
+    for (auto it : sl.range(task{3, 3}, task{4, 2})) {
+        cout << "Priority: " << get<0>(it.data()).priority
+             << "\tNumber: " << get<0>(it.data()).number
+             << "\tTask: " << it.ref<int>(1) << endl;
+    }
 }
 ```
 
