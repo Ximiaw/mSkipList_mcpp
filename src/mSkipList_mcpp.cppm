@@ -1,16 +1,11 @@
 // Copyright (c) 2026 Ximiaw
 // SPDX-License-Identifier: MIT
-
 module;
-#include<vector>
-#include<array>
-#include<memory>
-#include<concepts>
-#include<tuple>
-#include<cassert>
-
+#include <cassert>
 export module mSkipList_mcpp;
 
+import std;
+using std::size_t;
 
 export namespace msl{
     template<typename T>
